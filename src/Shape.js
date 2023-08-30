@@ -15,6 +15,10 @@ const Shape = ({ shape, setShapes, id, canvasRef }) => {
 
     // offsetX and offsetY are the distance between the mouse pointer and the top left corner of the shape
 
+    //clientX is the dist between the mouse pointer and the left edge of the viewport
+    // rect.left is the dist between the left edge of the shape and the left edge of the viewport
+    // canvas.left is the dist between the left edge of the canvas and the left edge of the viewport
+
     const offsetX = e.clientX - rect.left + canvas.left;
     const offsetY = e.clientY - rect.top + canvas.top;
 

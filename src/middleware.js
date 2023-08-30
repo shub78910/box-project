@@ -34,6 +34,8 @@ const addRectangle = () => {
   return getShape({ width, height });
 };
 
+// halving the values in order to have relatively smaller shapes to work with
+
 const addSquare = () => {
   const side = Math.floor((Math.random() * canvasDimensions.canvasWidth) / 2);
   return getShape({ width: side, height: side });
