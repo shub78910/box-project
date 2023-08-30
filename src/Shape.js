@@ -1,7 +1,7 @@
 import { createElement, useEffect, useRef, useState } from "react";
-import canvasDimensions from "./constants";
+import { canvasDimensions } from "./constants";
 
-const Shape = ({ shape, id, setShapes, canvasRef }) => {
+const Shape = ({ shape, setShapes, id, canvasRef }) => {
   const { height, width, color, xCoord, yCoord } = shape;
 
   const [isDragging, setIsDragging] = useState(false);
@@ -13,17 +13,10 @@ const Shape = ({ shape, id, setShapes, canvasRef }) => {
     const canvas = canvasRef.current.getBoundingClientRect();
     const rect = shapeRef.current.getBoundingClientRect();
 
+    // offsetX and offsetY are the distance between the mouse pointer and the top left corner of the shape
+
     const offsetX = e.clientX - rect.left + canvas.left;
     const offsetY = e.clientY - rect.top + canvas.top;
-
-    console.log(
-      e.clientX,
-      e.clientY,
-      rect.left,
-      rect.top,
-      canvas.left,
-      canvas.top
-    );
 
     setIsDragging(true);
     setOffsets({ offsetX, offsetY });
@@ -44,8 +37,6 @@ const Shape = ({ shape, id, setShapes, canvasRef }) => {
       newY > canvasDimensions.canvasHeight - height
     )
       return;
-
-    console.log({ newX, newY });
 
     setShapes((prev) => {
       const newDesign = [...prev];
@@ -72,13 +63,14 @@ const Shape = ({ shape, id, setShapes, canvasRef }) => {
         window.removeEventListener("mouseup", handleMouseUp);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDragging]);
 
   return createElement("div", {
     style: {
       height: height + "px",
       width: width + "px",
-      backgroundColor: "#" + color,
+      backgroundColor: color,
       position: "absolute",
       top: yCoord + "px",
       left: xCoord + "px",
