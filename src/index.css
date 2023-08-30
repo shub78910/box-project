@@ -24,16 +24,15 @@ code {
 
 .btn-wrapper{
   width: 40%;
-  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 2rem;
+  margin: 1rem auto;
 }
 
 .btn-wrapper button{
   background-color: black;
   color: white;
   padding: 0.4rem;
-  border-radius: 0.2rem;
+  border-radius: 0.4rem;
 }
